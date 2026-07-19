@@ -16,7 +16,8 @@ export interface CheckoutData {
   state: string;
   zip: string;
   country: string;
-  payment: "card" | "upi" | "cod";
+ payment: "upi";
+utr: string;
 }
 
 interface CheckoutContextType {
@@ -42,7 +43,8 @@ export function CheckoutProvider({
     state: "",
     zip: "",
     country: "India",
-    payment: "card",
+    payment: "upi",
+utr: "",
   });
 
   return (

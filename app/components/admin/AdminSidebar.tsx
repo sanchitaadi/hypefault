@@ -6,8 +6,8 @@ import {
   Package,
   ShoppingCart,
   Settings,
+  Palette,
 } from "lucide-react";
-
 export default function AdminSidebar() {
   return (
     <aside className="min-h-screen w-64 border-r border-zinc-800 bg-zinc-950 p-6">
@@ -47,7 +47,13 @@ export default function AdminSidebar() {
           <ShoppingCart size={20} />
           Orders
         </Link>
-
+<Link
+  href="/admin/custom-orders"
+  className="flex items-center gap-3 rounded-lg px-4 py-3 transition hover:bg-zinc-800"
+>
+  <Palette size={20} />
+  Custom Orders
+</Link>
         <Link
           href="/admin/settings"
           className="flex items-center gap-3 rounded-lg px-4 py-3 transition hover:bg-zinc-800"

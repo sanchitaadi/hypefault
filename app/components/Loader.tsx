@@ -52,7 +52,7 @@ export default function Loader() {
               transition={{ delay: 0.8 }}
               className="mt-6 text-sm uppercase tracking-[8px] text-zinc-400"
             >
-              WEAR YOUR ATTITUDE
+              BREAK THE MUNDANE.
             </motion.p>
 
             {/* Loading Bar */}

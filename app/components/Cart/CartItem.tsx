@@ -23,12 +23,12 @@ export default function CartItem({ item }: Props) {
 
       <div className="relative h-32 w-28 overflow-hidden rounded-xl">
         <Image
-          src={item.image}
-          alt={item.name}
-          fill
-          className="object-cover"
-          sizes="112px"
-        />
+  src={item.image && item.image.trim() !== "" ? item.image : "/products/M2-W1.png"}
+  alt={item.name}
+  fill
+  className="object-cover"
+  sizes="112px"
+/>
       </div>
 
       <div className="flex flex-1 flex-col justify-between">

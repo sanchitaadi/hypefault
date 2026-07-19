@@ -2,9 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase";
+import { v4 as uuid } from "uuid";
 
 export default function AddProductPage() {
   const router = useRouter();
+ 
+  const [images, setImages] = useState<File[]>([]);
+  const [uploading, setUploading] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -24,47 +29,79 @@ export default function AddProductPage() {
   });
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const res = await fetch("/api/products/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...form,
-          price: Number(form.price),
-          old_price: Number(form.old_price),
-          stock: Number(form.stock),
-          gallery: form.gallery
-            .split(",")
-            .map((x) => x.trim()),
-          sizes: form.sizes
-            .split(",")
-            .map((x) => x.trim()),
-          colors: form.colors
-            .split(",")
-            .map((x) => x.trim()),
-        }),
-      });
-
-      const data = await res.json();
-
-      console.log("API Response:", data);
-
-      if (res.ok) {
-        alert("✅ Product Added Successfully");
-        router.push("/admin/products");
-      } else {
-        alert(data.error || "Failed to add product");
-      }
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong.");
-    }
+  if (images.length === 0) {
+    alert("Please select at least one image.");
+    return;
   }
 
+  try {
+    setUploading(true);
+
+    const uploadedUrls: string[] = [];
+
+    for (const image of images) {
+      const fileName = `${uuid()}-${image.name}`;
+
+      const { error } = await supabase.storage
+        .from("products")
+        .upload(fileName, image);
+
+      if (error) throw error;
+
+      const { data } = supabase.storage
+        .from("products")
+        .getPublicUrl(fileName);
+
+      uploadedUrls.push(data.publicUrl);
+    }
+
+    const res = await fetch("/api/products/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...form,
+        image_url: uploadedUrls[0],
+        gallery: uploadedUrls,
+        price: Number(form.price),
+        old_price: Number(form.old_price),
+        stock: Number(form.stock),
+        sizes: form.sizes
+          .split(",")
+          .map((x) => x.trim())
+          .filter(Boolean),
+        colors: form.colors
+          .split(",")
+          .map((x) => x.trim())
+          .filter(Boolean),
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || "Failed to add product");
+    }
+
+    alert("✅ Product Added Successfully");
+    router.push("/admin/products");
+  } catch (err: any) {
+  console.error("UPLOAD ERROR:", err);
+
+  alert(
+    err?.message ||
+    JSON.stringify(err) ||
+    "Something went wrong while uploading."
+  );
+} finally {
+  setUploading(false);
+}
+}
+
+     
   return (
     <div className="min-h-screen bg-black p-10 text-white">
       <h1 className="mb-8 text-5xl font-black">
@@ -156,31 +193,29 @@ export default function AddProductPage() {
             })
           }
         />
+        <div className="space-y-4">
+  <label className="font-semibold">
+    Product Images
+  </label>
 
-        <input
-          placeholder="Main Image URL"
-          className="rounded-xl bg-zinc-900 p-4"
-          value={form.image_url}
-          onChange={(e) =>
-            setForm({
-              ...form,
-              image_url: e.target.value,
-            })
-          }
-        />
+  <input
+    type="file"
+    multiple
+    accept="image/*"
+    className="rounded-xl bg-zinc-900 p-4"
+    onChange={(e) => {
+      if (e.target.files) {
+        setImages(Array.from(e.target.files));
+      }
+    }}
+  />
 
-        <input
-          placeholder="Gallery (comma separated)"
-          className="rounded-xl bg-zinc-900 p-4"
-          value={form.gallery}
-          onChange={(e) =>
-            setForm({
-              ...form,
-              gallery: e.target.value,
-            })
-          }
-        />
-
+  {images.length > 0 && (
+    <div className="text-sm text-zinc-400">
+      {images.length} image(s) selected
+    </div>
+  )}
+</div>
         <input
           placeholder="Sizes (S,M,L,XL)"
           className="rounded-xl bg-zinc-900 p-4"
@@ -206,11 +241,12 @@ export default function AddProductPage() {
         />
 
         <button
-          type="submit"
-          className="rounded-xl bg-red-600 p-4 font-bold transition hover:bg-red-700"
-        >
-          Save Product
-        </button>
+  type="submit"
+  disabled={uploading}
+  className="rounded-xl bg-red-600 p-4 font-bold transition hover:bg-red-700 disabled:opacity-50"
+>
+  {uploading ? "Uploading..." : "Save Product"}
+</button>
       </form>
     </div>
   );

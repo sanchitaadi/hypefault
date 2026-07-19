@@ -5,24 +5,30 @@ import Link from "next/link";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import Reveal from "../components/Reveal";
 
-const collections = [
+const categories = [
   {
     title: "OVERSIZED",
-    subtitle: "Premium Cotton",
-    image: "/products/tee-black.jpeg",
-    link: "/shop",
+    subtitle: "PREMIUM COTTON",
+    image: "/products/M2-W1.PNG",
+    href: "/shop",
+    button: "EXPLORE →",
+    disabled: false,
   },
   {
-    title: "HOODIES",
-    subtitle: "Heavyweight Collection",
-    image: "/products/hoodie-black.jpeg",
-    link: "/shop",
+    title: "CUSTOM GARAGE",
+    subtitle: "DESIGN YOUR OWN",
+    image: "/products/BMW 2.PNG",
+    href: "/custom-garage",
+    button: "START DESIGNING →",
+    disabled: false,
   },
   {
-    title: "CARGOS",
-    subtitle: "Street Essentials",
-    image: "/products/cargo-black.jpeg",
-    link: "/shop",
+    title: "COMING SOON",
+    subtitle: "NEW COLLECTION",
+    image: "/products/AV.jpg",
+    href: "#",
+    button: "COMING SOON",
+    disabled: true,
   },
 ];
 
@@ -56,7 +62,7 @@ export default function Featured() {
           </motion.h2>
 
           <div className="mt-20 grid gap-10 md:grid-cols-3">
-            {collections.map((item, index) => (
+            {categories.map((item, index) => (
               <FeaturedCard
                 key={item.title}
                 item={item}
@@ -75,7 +81,9 @@ interface CardProps {
     title: string;
     subtitle: string;
     image: string;
-    link: string;
+    href: string;
+    button: string;
+    disabled: boolean;
   };
   delay: number;
 }
@@ -151,19 +159,24 @@ function FeaturedCard({ item, delay }: CardProps) {
           {item.title}
         </h3>
 
-        <Link href={item.link}>
-          <motion.button
-            whileHover={{
-              scale: 1.05,
-            }}
-            whileTap={{
-              scale: 0.95,
-            }}
-            className="mt-8 rounded-full border border-red-600 bg-black/40 px-7 py-3 backdrop-blur-xl transition hover:bg-red-600"
-          >
-            EXPLORE →
-          </motion.button>
-        </Link>
+        {item.disabled ? (
+  <motion.button
+    whileHover={{ scale: 1.02 }}
+    className="mt-8 cursor-not-allowed rounded-full border border-red-600 bg-red-600/10 px-7 py-3 font-semibold uppercase tracking-wider text-red-400 animate-pulse"
+  >
+    {item.button}
+  </motion.button>
+) : (
+  <Link href={item.href}>
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="mt-8 rounded-full border border-red-600 bg-black/40 px-7 py-3 font-semibold uppercase tracking-wider backdrop-blur-xl transition hover:bg-red-600"
+    >
+      {item.button}
+    </motion.button>
+  </Link>
+)}
       </div>
     </motion.div>
   );

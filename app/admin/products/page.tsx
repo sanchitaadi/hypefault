@@ -16,11 +16,12 @@ interface Product {
   name: string;
   slug: string;
   price: number;
-  oldPrice: number;
+  old_price: number;
   stock: number;
   category: string;
   featured: boolean;
-  images: string[];
+  image_url: string;
+  gallery: string[];
 }
 
 export default function AdminProductsPage() {
@@ -175,15 +176,16 @@ export default function AdminProductsPage() {
                       <div className="flex items-center gap-4">
 
                         <Image
-                          src={
-                            product.images?.[0] ||
-                            "/products/tee-black.jpeg"
-                          }
-                          alt={product.name}
-                          width={70}
-                          height={70}
-                          className="rounded-xl object-cover"
-                        />
+  src={
+    product.image_url ||
+    product.gallery?.[0] ||
+    "/products/tee-black.jpeg"
+  }
+  alt={product.name}
+  width={70}
+  height={70}
+  className="rounded-xl object-cover"
+/>
 
                         <div>
                           <h3 className="font-bold">
@@ -210,12 +212,11 @@ export default function AdminProductsPage() {
                           ₹{product.price}
                         </span>
 
-                        {product.oldPrice > 0 && (
-                          <div className="text-sm text-zinc-500 line-through">
-                            ₹{product.oldPrice}
-                          </div>
-                        )}
-
+                       {product.old_price > 0 && (
+  <div className="text-sm text-zinc-500 line-through">
+    ₹{product.old_price}
+  </div>
+)}
                       </div>
 
                     </td>

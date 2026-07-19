@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import CheckoutForm from "@/app/components/checkout/CheckoutForm";
 import OrderSummary from "@/app/components/checkout/OrderSummary";
+import PaymentForm from "@/app/components/checkout/PaymentForm";
 
 export default function CheckoutPage() {
   return (
@@ -33,13 +34,19 @@ export default function CheckoutPage() {
         <div className="grid gap-10 lg:grid-cols-[1.6fr_0.8fr]">
 
           {/* Left */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: .2 }}
-          >
-            <CheckoutForm />
-          </motion.div>
+         <motion.div
+  initial={{ opacity: 0, x: -40 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ delay: .2 }}
+  className="space-y-8"
+>
+  <CheckoutForm />
+
+  <PaymentForm
+    total={999}
+    orderId={`HF-${Date.now()}`}
+  />
+</motion.div>
 
           {/* Right */}
           <motion.div

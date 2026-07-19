@@ -26,17 +26,22 @@ export default async function ProductPage({
 }) {
   const { slug } = await params;
 
-  const { data, error } = await supabase
-    .from("products")
-    .select("*")
-    .eq("slug", slug)
-    .single();
+  console.log("Requested Slug:", slug);
 
-  if (error || !data) {
-    notFound();
-  }
+const { data, error } = await supabase
+  .from("products")
+  .select("*")
+  .eq("slug", slug)
+  .single();
 
-  const product = data as Product;
+console.log("Product:", data);
+console.log("Error:", error);
+
+if (error || !data) {
+  notFound();
+}
+
+const product = data as Product;
 
   const discount =
     product.old_price && product.old_price > product.price

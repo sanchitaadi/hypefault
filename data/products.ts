@@ -3,29 +3,41 @@ import { Product } from "@/types/product";
 export const products: Product[] = [
   {
     id: 1,
-    slug: "oversized-shadow-tee",
-    name: "Oversized Shadow Tee",
-    price: 1499,
-    oldPrice: 1999,
+
+    slug: "M2",
+
+    name: "M2",
+
+    price: 799,
+
+    oldPrice: 999,
 
     images: [
-      "/products/tee-black.jpeg",
-      "/products/tee-white.jpeg",
+      "/products/M2-W1.PNG",
+      "/products/M2-W2.PNG"
     ],
 
-    colors: ["Black", "White", "Red"],
+    colors: ["OFF-WHITE"],
 
-    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    sizes: ["S", "M", "L", "XL"],
 
-    category: "T-Shirt",
+    category: "T-Shirts",
 
-    stock: 12,
+    stock: 20,
 
-    rating: 4.9,
+    rating: 5.0,
 
-    reviews: 182,
+    reviews: 126,
 
-    description: "Premium 240 GSM oversized cotton oversized t-shirt with a relaxed streetwear fit. Designed for everyday comfort and style.",
+    description: `⚡ Specs & Vibe
+
+• The Ultimate Fit — Oversized silhouette designed to complement every body type.
+
+• Premium Comfort — Ultra-soft, breathable cotton that feels broken-in from the very first wear.
+
+• Made to Last — Pre-shrunk fabric that keeps its shape wash after wash.
+
+• Premium Fabric — Crafted from 100% premium cotton for everyday comfort and durability.`,
 
     featured: true,
 
@@ -34,60 +46,87 @@ export const products: Product[] = [
 
   {
     id: 2,
-    slug: "heavyweight-hoodie",
-    name: "Heavyweight Hoodie",
-    price: 2899,
-    oldPrice: 3499,
+
+    slug: "BMW",
+
+    name: "BMW",
+
+    price: 799,
+
+    oldPrice: 999,
 
     images: [
-      "/products/hoodie-black.jpeg",
+      "/products/BMW 1.PNG",
+      "/products/BMW 2.PNG"
     ],
 
-    colors: ["Black", "Grey"],
+    colors: ["OFF-WHITE"],
 
     sizes: ["S", "M", "L", "XL"],
 
-    category: "Hoodie",
+    category: "T-Shirts",
 
-    stock: 8,
+    stock: 18,
 
-    rating: 5.0,
+    rating: 4.9,
 
-    reviews: 92,
+    reviews: 94,
 
-    description: "Premium 420 GSM heavyweight hoodie with oversized fit and ultra-soft fleece interior.",
+    description: `⚡ Specs & Vibe
+
+• The Ultimate Fit — Oversized silhouette designed to complement every body type.
+
+• Premium Comfort — Ultra-soft, breathable cotton that feels broken-in from the very first wear.
+
+• Made to Last — Pre-shrunk fabric that keeps its shape wash after wash.
+
+• Premium Fabric — Crafted from 100% premium cotton for everyday comfort and durability.`,
 
     featured: true,
 
-    newArrival: false,
+    newArrival: true,
   },
 
   {
     id: 3,
-    slug: "street-cargo-pants",
-    name: "Street Cargo Pants",
-    price: 2499,
-    oldPrice: 3199,
+
+    slug: "porsche",
+
+    name: "Porsche",
+
+    price: 799,
+
+    oldPrice: 999,
 
     images: [
-      "/products/cargo-black.jpeg",
+      "/products/PORSCHE 1.PNG", 
+      "/products/PORSCHE 2.PNG"
+      // Change to .png if that's your actual filename
     ],
 
     colors: ["Black"],
 
     sizes: ["S", "M", "L", "XL"],
 
-    category: "Cargo",
+    category: "T-Shirts",
 
     stock: 15,
 
-    rating: 4.8,
+    rating: 5.0,
 
-    reviews: 67,
+    reviews: 78,
 
-    description: "Relaxed-fit premium cargo pants made for everyday streetwear with multiple utility pockets.",
+    description: `⚡ Specs & Vibe
 
-    featured: false,
+• The Ultimate Fit — Oversized silhouette designed to complement every body type.
+
+• Premium Comfort — Ultra-soft, breathable cotton that feels broken-in from the very first wear.
+
+• Made to Last — Pre-shrunk fabric that keeps its shape wash after wash.
+
+• Premium Fabric — Crafted from 100% premium cotton for everyday comfort and durability.`,
+
+    featured: true,
 
     newArrival: true,
   },

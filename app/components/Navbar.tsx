@@ -33,12 +33,12 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ${
-        scrolled
-          ? "border-b border-white/10 bg-black/80 backdrop-blur-2xl shadow-2xl"
-          : "bg-transparent"
-      }`}
-    >
+  className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ${
+    scrolled
+      ? "border-b border-white/10 bg-black/80 backdrop-blur-2xl shadow-2xl"
+      : "bg-transparent"
+  }`}
+>
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 lg:px-10">
 
         {/* Logo */}

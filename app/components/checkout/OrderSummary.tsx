@@ -2,21 +2,30 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { useCartContext } from "@/app/context/CartContext";
 import { useCheckout } from "@/app/context/CheckoutContext";
+import PaymentForm from "./PaymentForm";
+import { supabase } from "@/lib/supabase";
 
 export default function OrderSummary() {
   const router = useRouter();
 
   const { cart, subtotal, clearCart } = useCartContext();
   const { data } = useCheckout();
+  const [paid, setPaid] = useState(false);
+  const [orderId, setOrderId] = useState("");
+
+useEffect(() => {
+  setOrderId(`HF-${Date.now()}`);
+}, []);
 
   const shipping = subtotal > 999 ? 0 : 99;
   const tax = Math.round(subtotal * 0.18);
   const total = subtotal + shipping + tax;
 
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = async () => {
     if (cart.length === 0) {
       alert("Your cart is empty.");
       return;
@@ -35,20 +44,71 @@ export default function OrderSummary() {
       alert("Please fill all shipping details.");
       return;
     }
-
+if (!paid) {
+  alert("Please complete the UPI payment first.");
+  return;
+}
+if (!data.utr.trim()) {
+  alert("Please enter your UPI Transaction ID (UTR).");
+  return;
+}
     const order = {
-      id: crypto.randomUUID(),
-      items: [...cart],
-      customer: { ...data },
-      subtotal,
-      shipping,
-      tax,
-      total,
-      createdAt: new Date().toISOString(),
-    };
+  id: orderId,
+  items: [...cart],
+  customer: { ...data },
+
+  subtotal,
+  shipping,
+  tax,
+  total,
+
+  payment: {
+    method: "UPI",
+    status: "Pending Verification",
+    confirmedByCustomer: paid,
+    upiId: "8750485010@mbk",
+    utr: data.utr,
+  },
+
+  createdAt: new Date().toISOString(),
+};
 
     // Save order temporarily
-    sessionStorage.setItem("latestOrder", JSON.stringify(order));
+    const { error } = await supabase
+  .from("orders")
+  .insert({
+    id: order.id,
+
+    full_name: data.fullName,
+    email: data.email,
+    phone: data.phone,
+
+    address: data.address,
+    city: data.city,
+    state: data.state,
+    zip: data.zip,
+    country: data.country,
+
+    items: cart,
+
+    subtotal,
+    shipping,
+    tax,
+    total,
+
+    payment_method: "UPI",
+    payment_status: "Pending Verification",
+    confirmed_by_customer: paid,
+
+    upi_id: "8750485010@mbk",
+    utr: data.utr,
+  });
+
+if (error) {
+  console.error(error);
+  alert("Unable to place your order. Please try again.");
+  return;
+}
 
     // Clear cart
     clearCart();
@@ -127,6 +187,12 @@ export default function OrderSummary() {
         </div>
       </div>
 
+<PaymentForm
+  total={total}
+  orderId={orderId}
+  paid={paid}
+  setPaid={setPaid}
+/>
       <button
         onClick={handlePlaceOrder}
         className="mt-8 w-full rounded-2xl bg-red-600 py-4 font-semibold transition hover:bg-red-700"

@@ -9,6 +9,8 @@ import Newsletter from "./sections/Newsletter";
 import Footer from "./sections/Footer";
 import Loader from "./components/Loader";
 import CustomCursor from "./components/CustomCursor";
+import CustomGarageSection from "./components/CustomGarageSection";
+
 
 export default function Home() {
   return (
@@ -18,6 +20,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Featured />
+      <CustomGarageSection />
       <Products />
       <About />
       <Newsletter />

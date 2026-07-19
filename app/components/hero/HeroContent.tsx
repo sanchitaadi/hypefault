@@ -45,9 +45,9 @@ export default function HeroContent() {
 drop-shadow-[0_0_18px_rgba(255,255,255,0.25)]
 "
         >
-          WEAR YOUR
+          BREAK THE 
           <br />
-          ATTITUDE.
+          MUNDANE.
         </motion.h1>
 
         {/* Description */}

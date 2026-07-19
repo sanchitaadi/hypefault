@@ -180,79 +180,46 @@ export default function CheckoutForm() {
         </div>
 
         {/* Payment Method */}
-        <div className="pt-4">
-          <h3 className="mb-4 text-xl font-semibold">
-            Payment Method
-          </h3>
+<div className="pt-4">
+  <h3 className="mb-4 text-xl font-semibold">
+    Payment Method
+  </h3>
 
-          <div className="grid gap-4">
-            <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-white/10 bg-black/30 p-5 transition hover:border-red-500">
-              <div>
-                <p className="font-semibold">💳 Credit / Debit Card</p>
-                <p className="text-sm text-zinc-400">
-                  Visa, Mastercard, RuPay
-                </p>
-              </div>
+  <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-red-600 bg-red-600/10 p-5 transition hover:bg-red-600/20">
+    <div>
+      <p className="font-semibold text-white">
+        📱 UPI Payment
+      </p>
 
-              <input
-                type="radio"
-                name="payment"
-                checked={data.payment === "card"}
-                onChange={() =>
-                  setData({
-                    ...data,
-                    payment: "card",
-                  })
-                }
-                className="h-5 w-5 accent-red-600"
-              />
-            </label>
+      <p className="text-sm text-zinc-400">
+        Google Pay • PhonePe • Paytm • BHIM
+      </p>
+    </div>
 
-            <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-white/10 bg-black/30 p-5 transition hover:border-red-500">
-              <div>
-                <p className="font-semibold">📱 UPI</p>
-                <p className="text-sm text-zinc-400">
-                  Google Pay, PhonePe, Paytm
-                </p>
-              </div>
+    <input
+      type="radio"
+      name="payment"
+      checked={data.payment === "upi"}
+      onChange={() =>
+        setData({
+          ...data,
+          payment: "upi",
+        })
+      }
+      className="h-5 w-5 accent-red-600"
+    />
+  </label>
 
-              <input
-                type="radio"
-                name="payment"
-                checked={data.payment === "upi"}
-                onChange={() =>
-                  setData({
-                    ...data,
-                    payment: "upi",
-                  })
-                }
-                className="h-5 w-5 accent-red-600"
-              />
-            </label>
+  <div className="mt-5 rounded-2xl border border-zinc-800 bg-black/40 p-5">
+    <p className="text-sm text-zinc-400">
+      Your UPI ID
+    </p>
 
-            <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-white/10 bg-black/30 p-5 transition hover:border-red-500">
-              <div>
-                <p className="font-semibold">💵 Cash on Delivery</p>
-                <p className="text-sm text-zinc-400">
-                  Pay when your order arrives
-                </p>
-              </div>
-
-              <input
-                type="radio"
-                name="payment"
-                checked={data.payment === "cod"}
-                onChange={() =>
-                  setData({
-                    ...data,
-                    payment: "cod",
-                  })
-                }
-                className="h-5 w-5 accent-red-600"
-              />
-            </label>
-          </div>
-        </div>
+    <p className="mt-2 text-xl font-bold tracking-wide text-red-500">
+      8750485010@mbk
+    </p>
+  </div>
+</div>
       </form>
     </div>
   );
