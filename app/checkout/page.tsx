@@ -45,12 +45,7 @@ export default function CheckoutPage() {
 >
   <CheckoutForm />
 
- <PaymentForm
-  total={999}
-  orderId={`HF-${Date.now()}`}
-  paid={paid}
-  setPaid={setPaid}
-/>
+ 
 </motion.div>
 
           {/* Right */}
