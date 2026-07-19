@@ -6,7 +6,7 @@ import ProductOptions from "./ProductOptions";
 import ProductActions from "./ProductActions";
 
 interface Product {
-  id: string;
+  id: number;
   name: string;
   slug: string;
   description: string;
@@ -126,16 +126,24 @@ const product = data as Product;
            {/* Buttons */}
 <div className="mt-10">
   <ProductActions
-    product={{
-      id: product.id,
-      name: product.name,
-      slug: product.slug,
-      image: product.image_url,
-      price: product.price,
-      sizes: product.sizes,
-      colors: product.colors,
-    }}
-  />
+  product={{
+    id: product.id,
+    slug: product.slug,
+    name: product.name,
+    price: product.price,
+    oldPrice: product.old_price ?? product.price,
+    images: [product.image_url],
+    colors: product.colors ?? ["Black"],
+    sizes: product.sizes ?? ["M"],
+    category: product.category ?? "T-Shirts",
+    stock: 100,
+    rating: 5,
+    reviews: 0,
+    description: product.description,
+    featured: false,
+    newArrival: false,
+  }}
+/>
 </div>
 
 {/* Delivery */}

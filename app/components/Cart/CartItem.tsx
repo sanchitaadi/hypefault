@@ -22,8 +22,12 @@ export default function CartItem({ item }: Props) {
     <div className="flex gap-5 rounded-2xl border border-zinc-800 bg-zinc-900 p-5">
 
       <div className="relative h-32 w-28 overflow-hidden rounded-xl">
-        <Image
-  src={item.image && item.image.trim() !== "" ? item.image : "/products/M2-W1.png"}
+       <Image
+  src={
+    item.images && item.images.length > 0
+      ? item.images[0]
+      : "/products/M2-W1.png"
+  }
   alt={item.name}
   fill
   className="object-cover"

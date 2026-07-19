@@ -130,10 +130,10 @@ if (error) {
             <div className="relative h-24 w-20 overflow-hidden rounded-xl">
               <Image
                 src={
-                  item.image && item.image.trim() !== ""
-                    ? item.image
-                    : "/products/tee-black.jpeg"
-                }
+  item.images && item.images.length > 0
+    ? item.images[0]
+    : "/products/tee-black.jpeg"
+}
                 alt={item.name}
                 fill
                 className="object-cover"

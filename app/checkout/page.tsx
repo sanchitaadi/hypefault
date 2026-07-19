@@ -1,11 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 import CheckoutForm from "@/app/components/checkout/CheckoutForm";
 import OrderSummary from "@/app/components/checkout/OrderSummary";
 import PaymentForm from "@/app/components/checkout/PaymentForm";
 
 export default function CheckoutPage() {
+  const [paid, setPaid] = useState(false);
+
   return (
     <main className="min-h-screen bg-[#050505] pt-32 pb-20 text-white">
       <div className="mx-auto max-w-7xl px-6">
@@ -42,10 +45,12 @@ export default function CheckoutPage() {
 >
   <CheckoutForm />
 
-  <PaymentForm
-    total={999}
-    orderId={`HF-${Date.now()}`}
-  />
+ <PaymentForm
+  total={999}
+  orderId={`HF-${Date.now()}`}
+  paid={paid}
+  setPaid={setPaid}
+/>
 </motion.div>
 
           {/* Right */}

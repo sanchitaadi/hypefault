@@ -3,15 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useCartContext } from "@/app/context/CartContext";
 
-interface Product {
-  id: number;
-  name: string;
-  slug: string;
-  image: string;
-  price: number;
-  sizes?: string[];
-  colors?: string[];
-}
+import { Product } from "@/types/product";
 
 interface Props {
   product: Product;
