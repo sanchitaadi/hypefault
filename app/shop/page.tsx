@@ -69,21 +69,23 @@ export default function ShopPage() {
     <main className="min-h-screen bg-black text-white pt-28">
       <div className="mx-auto max-w-7xl px-6">
 
-        <section className="relative overflow-hidden rounded-3xl border border-red-600/20 bg-gradient-to-r from-black via-zinc-950 to-red-950 py-24 text-center">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,0,0,.15),transparent_60%)]" />
-          <motion.div
-            initial={{opacity:0,y:30}}
-            animate={{opacity:1,y:0}}
-            className="relative z-10"
-          >
-            <h1 className="text-6xl md:text-8xl font-black tracking-[12px]">
-              HYPEFAULT
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-zinc-400">
-              Premium Streetwear • Minimal Design • Maximum Impact
-            </p>
-          </motion.div>
-        </section>
+        <section className="relative overflow-hidden rounded-3xl border border-red-600/20 bg-gradient-to-r from-black via-zinc-950 to-red-950 px-4 py-16 text-center sm:px-6 sm:py-20 md:py-24">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,0,0,.15),transparent_60%)]" />
+
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="relative z-10"
+  >
+    <h1 className="break-words text-4xl font-black tracking-[2px] sm:text-5xl sm:tracking-[6px] md:text-6xl md:tracking-[10px] lg:text-8xl lg:tracking-[12px]">
+      HYPEFAULT
+    </h1>
+
+    <p className="mx-auto mt-5 max-w-2xl px-2 text-sm leading-7 text-zinc-400 sm:mt-6 sm:text-base md:text-lg">
+      Premium Streetwear • Minimal Design • Maximum Impact
+    </p>
+  </motion.div>
+</section>
 
         <div className="my-12 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <input

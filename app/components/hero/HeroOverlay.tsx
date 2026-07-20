@@ -16,7 +16,7 @@ export default function HeroOverlay() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -left-40 top-1/2 h-[700px] w-[700px] -translate-y-1/2 rounded-full bg-red-600/20 blur-[180px]"
+       className="absolute -left-16 md:-left-40 top-1/2 h-[280px] w-[280px] md:h-[700px] md:w-[700px] -translate-y-1/2 rounded-full bg-red-600/20 blur-[100px] md:blur-[180px]"
       />
 
       {/* Right White Glow */}
@@ -30,7 +30,7 @@ export default function HeroOverlay() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-white blur-[170px]"
+        className="absolute right-0 top-0 h-[220px] w-[220px] md:h-[500px] md:w-[500px] rounded-full bg-white blur-[90px] md:blur-[170px]"
       />
 
       {/* Bottom Red Glow */}
@@ -43,7 +43,7 @@ export default function HeroOverlay() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-0 left-1/2 h-[400px] w-[900px] -translate-x-1/2 rounded-full bg-red-600 blur-[220px]"
+        className="absolute bottom-0 left-1/2 h-[180px] w-[320px] md:h-[400px] md:w-[900px] -translate-x-1/2 rounded-full bg-red-600 blur-[100px] md:blur-[220px]"
       />
 
       {/* Moving Light Beam */}
@@ -56,7 +56,7 @@ export default function HeroOverlay() {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute left-1/2 top-0 h-full w-32 -translate-x-1/2 rotate-12 bg-gradient-to-b from-white/15 via-white/5 to-transparent blur-3xl"
+        className="absolute left-1/2 top-0 h-full w-16 md:w-32 -translate-x-1/2 rotate-12 bg-gradient-to-b from-white/15 via-white/5 to-transparent blur-2xl md:blur-3xl"
       />
 
       {/* Vignette */}

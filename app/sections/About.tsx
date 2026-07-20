@@ -21,17 +21,16 @@ const stats = [
 export default function About() {
   return (
     <Reveal>
-      <section className="relative overflow-hidden bg-zinc-950 py-32 px-6">
+      <section className="relative overflow-hidden bg-zinc-950 px-5 py-20 sm:px-6 lg:py-32">
         {/* Background Glow */}
-        <div className="absolute left-1/2 top-0 h-[650px] w-[650px] -translate-x-1/2 rounded-full bg-red-600/10 blur-[180px]" />
+        <div className="absolute left-1/2 top-0 h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-red-600/10 blur-[90px] md:h-[650px] md:w-[650px] md:blur-[180px]" />
 
         <div className="relative z-10 mx-auto max-w-7xl">
-
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center uppercase tracking-[8px] text-red-500"
+            className="text-center text-xs uppercase tracking-[4px] text-red-500 sm:text-sm sm:tracking-[8px]"
           >
             OUR STORY
           </motion.p>
@@ -41,7 +40,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mt-6 text-center text-5xl font-black leading-tight md:text-7xl"
+            className="mt-5 text-center text-3xl font-black leading-tight sm:text-5xl md:text-6xl lg:text-7xl"
           >
             MORE THAN A BRAND.
             <br />
@@ -53,7 +52,7 @@ export default function About() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
-            className="mx-auto mt-10 max-w-3xl text-center text-lg leading-9 text-zinc-400"
+            className="mx-auto mt-8 max-w-3xl px-2 text-center text-base leading-8 text-zinc-400 sm:text-lg sm:leading-9"
           >
             HYPEFAULT isn't just about oversized T-shirts. It's about
             confidence, individuality, and wearing something that reflects
@@ -62,7 +61,7 @@ export default function About() {
           </motion.p>
 
           {/* Stats */}
-          <div className="mt-24 grid gap-8 md:grid-cols-3">
+          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-24 lg:grid-cols-3 lg:gap-8">
             {stats.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -76,17 +75,17 @@ export default function About() {
                   y: -12,
                   scale: 1.03,
                 }}
-                className="group rounded-3xl border border-white/10 bg-white/5 p-10 backdrop-blur-xl transition-all duration-500"
+                className="group relative rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-500 sm:p-10"
               >
                 <div className="absolute opacity-0 transition duration-500 group-hover:opacity-100">
                   <div className="h-32 w-32 rounded-full bg-red-600/20 blur-3xl" />
                 </div>
 
-                <h3 className="relative text-5xl font-black text-red-500">
+                <h3 className="relative text-4xl font-black text-red-500 sm:text-5xl">
                   {item.title}
                 </h3>
 
-                <p className="relative mt-4 text-lg text-zinc-400">
+                <p className="relative mt-3 text-base text-zinc-400 sm:mt-4 sm:text-lg">
                   {item.subtitle}
                 </p>
               </motion.div>
@@ -99,9 +98,9 @@ export default function About() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
             viewport={{ once: true }}
-            className="mx-auto mt-28 max-w-4xl text-center"
+            className="mx-auto mt-20 max-w-4xl text-center lg:mt-28"
           >
-            <p className="text-3xl font-light italic leading-relaxed text-white md:text-4xl">
+            <p className="text-2xl font-light italic leading-relaxed text-white sm:text-3xl md:text-4xl">
               “We don't follow trends.
               <span className="text-red-500"> We create identity.</span>”
             </p>

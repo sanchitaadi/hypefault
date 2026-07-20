@@ -26,7 +26,7 @@ export default function HeroStats() {
         delay: 1,
         duration: 0.8,
       }}
-      className="mt-16 flex flex-wrap gap-5"
+      className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:flex lg:flex-wrap lg:gap-5"
     >
       {stats.map((item) => (
         <motion.div
@@ -35,7 +35,7 @@ export default function HeroStats() {
             y: -5,
             scale: 1.03,
           }}
-          className="rounded-2xl border border-white/10 bg-white/5 px-6 py-5 backdrop-blur-xl"
+          className="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-5 backdrop-blur-xl sm:w-auto"
         >
           <h3 className="text-2xl font-black text-white">
             {item.value}

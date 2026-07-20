@@ -19,15 +19,15 @@ export default function HeroVideo() {
           repeatType: "reverse",
           ease: "easeInOut",
         }}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover object-[82%_center] md:object-center"
       >
         <source src="/videos/hero.mp4" type="video/mp4" />
       </motion.video>
 
-      {/* Softer Overlay */}
+      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/35" />
 
-      {/* Soft Gradient */}
+      {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
 
       {/* Bottom Fade */}

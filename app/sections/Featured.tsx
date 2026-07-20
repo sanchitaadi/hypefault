@@ -35,16 +35,17 @@ const categories = [
 export default function Featured() {
   return (
     <Reveal>
-      <section className="relative overflow-hidden bg-black py-32 px-6">
+      <section className="relative overflow-hidden bg-black px-5 py-20 md:px-6 md:py-32">
         {/* Background Glow */}
-        <div className="absolute left-1/2 top-0 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-red-600/10 blur-[180px]" />
+        {/* Background Glow */}
+<div className="absolute left-1/2 top-0 h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-red-600/10 blur-[90px] md:h-[700px] md:w-[700px] md:blur-[180px]" />
 
-        <div className="relative z-10 mx-auto max-w-7xl">
+<div className="relative z-10 mx-auto max-w-7xl">
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center uppercase tracking-[8px] text-red-500"
+           className="text-center text-xs uppercase tracking-[4px] text-red-500 sm:text-sm sm:tracking-[8px]"
           >
             CURATED COLLECTIONS
           </motion.p>
@@ -54,14 +55,14 @@ export default function Featured() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mt-6 text-center text-5xl font-black leading-tight md:text-7xl"
+            className="mt-5 text-center text-3xl font-black leading-tight sm:text-5xl md:text-6xl lg:text-7xl"
           >
             DESIGNED TO
             <br />
             STAND OUT.
           </motion.h2>
 
-          <div className="mt-20 grid gap-10 md:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
             {categories.map((item, index) => (
               <FeaturedCard
                 key={item.title}
@@ -143,19 +144,19 @@ function FeaturedCard({ item, delay }: CardProps) {
           alt={item.title}
           width={700}
           height={900}
-          className="h-[520px] w-full object-cover transition duration-700 group-hover:scale-110"
+         className="h-[340px] w-full object-cover transition duration-700 group-hover:scale-110 sm:h-[430px] lg:h-[520px]"
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 z-20 w-full p-8">
+      <div className="absolute bottom-0 left-0 z-20 w-full p-5 sm:p-8">
         <p className="uppercase tracking-[5px] text-red-500">
           {item.subtitle}
         </p>
 
-        <h3 className="mt-3 text-4xl font-black">
+        <h3 className="mt-2 text-2xl font-black sm:text-3xl lg:text-4xl">
           {item.title}
         </h3>
 
@@ -171,7 +172,7 @@ function FeaturedCard({ item, delay }: CardProps) {
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="mt-8 rounded-full border border-red-600 bg-black/40 px-7 py-3 font-semibold uppercase tracking-wider backdrop-blur-xl transition hover:bg-red-600"
+      className="mt-6 rounded-full border border-red-600 bg-black/40 px-5 py-3 text-sm font-semibold uppercase tracking-wider backdrop-blur-xl transition hover:bg-red-600 sm:mt-8 sm:px-7"
     >
       {item.button}
     </motion.button>

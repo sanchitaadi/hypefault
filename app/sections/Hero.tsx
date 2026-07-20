@@ -8,7 +8,7 @@ import HeroScroll from "../components/hero/HeroScroll";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen pt-24 overflow-hidden bg-black">
+   <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-black pt-20 md:min-h-screen md:pt-24">
       {/* Background */}
       <HeroVideo />
 

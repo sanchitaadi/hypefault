@@ -10,22 +10,22 @@ export default function Products() {
   return (
     <section
       id="products"
-      className="relative bg-black py-28 px-8 overflow-hidden"
+      className="relative overflow-hidden bg-black px-5 py-20 sm:px-6 lg:px-8 lg:py-28"
     >
       {/* Background Glow */}
-      <div className="absolute left-1/2 top-0 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-red-600/10 blur-[180px]" />
+      <div className="absolute left-1/2 top-0 h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-red-600/10 blur-[90px] md:h-[700px] md:w-[700px] md:blur-[180px]" />
 
       <motion.h2
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 mb-20 text-center text-6xl font-black tracking-wide"
+       className="relative z-10 mb-12 text-center text-3xl font-black tracking-wide sm:text-5xl lg:mb-20 lg:text-6xl"
       >
         SHOP COLLECTION
       </motion.h2>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-10 lg:grid-cols-3">
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
         {products.map((product, index) => (
           <ProductCard
             key={product.id}
@@ -99,7 +99,7 @@ function ProductCard({ product, delay }: ProductProps) {
             alt={product.name}
             width={800}
             height={1000}
-            className="h-[480px] w-full object-cover transition duration-700 group-hover:scale-110"
+            className="h-[340px] w-full object-cover transition duration-700 group-hover:scale-110 sm:h-[420px] lg:h-[480px]"
           />
 
           {product.newArrival && (
@@ -122,7 +122,7 @@ function ProductCard({ product, delay }: ProductProps) {
         </div>
 
         {/* Product Details */}
-        <div className="relative z-20 p-7">
+        <div className="relative z-20 p-5 sm:p-7">
           <div className="flex items-center gap-2 text-yellow-400">
             <FaStar />
             <span>{product.rating}</span>
@@ -132,12 +132,12 @@ function ProductCard({ product, delay }: ProductProps) {
             </span>
           </div>
 
-          <h3 className="mt-3 text-2xl font-bold">
+          <h3 className="mt-3 text-xl font-bold sm:text-2xl">
             {product.name}
           </h3>
 
           <div className="mt-3 flex items-center gap-3">
-            <span className="text-2xl font-bold text-red-500">
+            <span className="text-xl font-bold text-red-500 sm:text-2xl">
               ₹{product.price}
             </span>
 
@@ -176,7 +176,7 @@ function ProductCard({ product, delay }: ProductProps) {
             whileTap={{
               scale: 0.97,
             }}
-            className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-red-600 py-4 font-bold transition hover:bg-red-500"
+            className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-red-600 py-3 text-sm font-bold transition hover:bg-red-500 sm:mt-8 sm:py-4 sm:text-base"
           >
             <FaShoppingBag />
             Add To Cart
