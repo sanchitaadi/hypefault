@@ -13,10 +13,9 @@ type Review = {
 };
 
 interface ReviewsProps {
-  productId: string;
+  productId: string | number;
   productName: string;
 }
-
 export default function Reviews({
   productId,
   productName,
