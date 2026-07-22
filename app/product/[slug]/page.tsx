@@ -4,7 +4,7 @@ import { use, useState } from "react";
 import { notFound } from "next/navigation";
 import { products } from "@/data/products";
 import { useCart } from "@/app/hooks/useCart";
-import Reviews from "./Reviews";
+
 
 type Props = {
   params: Promise<{
@@ -180,13 +180,7 @@ export default function ProductPage({ params }: Props) {
 
         </div>
 
-     </div>
-
-<Reviews
-  productId={product.id}
-  productName={product.name}
-/>
-
-</main>
+      </div>
+    </main>
   );
 }
