@@ -2,7 +2,7 @@ import { Product } from "@/types/product";
 
 export const products: Product[] = [
   {
-    id: 1,
+    id: "1",
 
     slug: "bmw-m2-oversized-teee",
 
@@ -45,7 +45,7 @@ export const products: Product[] = [
   },
 
   {
-    id: 2,
+    id:"2",
 
     slug: "bmw-oversized-tee",
 
@@ -88,7 +88,7 @@ export const products: Product[] = [
   },
 
   {
-    id: 3,
+    id:" 3",
 
     slug: "porsche-oversized-tee",
 

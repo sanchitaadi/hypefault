@@ -12,15 +12,13 @@ type Review = {
   created_at: string;
 };
 
-interface ReviewFormProps {
-  productId: string;
-  onReviewAdded?: () => Promise<void>;
-}
-
 export default function Reviews({
   productId,
   productName,
-}: ReviewsProps) {
+}: {
+  productId: string;
+  productName: string;
+}) {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
 

@@ -17,6 +17,7 @@ export interface CartItem extends Product {
 
 interface CartContextType {
   cart: CartItem[];
+
   addToCart: (
     product: Product,
     size: string,
@@ -25,19 +26,19 @@ interface CartContextType {
   ) => void;
 
   removeFromCart: (
-    id: number,
+    id: string,
     size: string,
     color: string
   ) => void;
 
   increaseQuantity: (
-    id: number,
+    id: string,
     size: string,
     color: string
   ) => void;
 
   decreaseQuantity: (
-    id: number,
+    id: string,
     size: string,
     color: string
   ) => void;
@@ -110,7 +111,7 @@ export function CartProvider({
   };
 
   const removeFromCart = (
-    id: number,
+    id: string,
     size: string,
     color: string
   ) => {
@@ -127,7 +128,7 @@ export function CartProvider({
   };
 
   const increaseQuantity = (
-    id: number,
+    id: string,
     size: string,
     color: string
   ) => {
@@ -146,7 +147,7 @@ export function CartProvider({
   };
 
   const decreaseQuantity = (
-    id: number,
+    id: string,
     size: string,
     color: string
   ) => {
