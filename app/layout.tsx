@@ -6,7 +6,7 @@ import { CartProvider } from "@/app/context/CartContext";
 import { CheckoutProvider } from "@/app/context/CheckoutContext";
 import { OrderProvider } from "@/app/context/OrderContext";
 
-import CustomCursor from "@/app/components/CustomCursor";
+
 
 
 const geistSans = Geist({
@@ -38,7 +38,6 @@ export default function RootLayout({
         <OrderProvider>
           <CheckoutProvider>
             <CartProvider>
-              <CustomCursor />
              
 
               {children}

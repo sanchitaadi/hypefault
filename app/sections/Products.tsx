@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { products } from "@/data/products";
-import { FaHeart, FaShoppingBag, FaStar } from "react-icons/fa";
+import { FaHeart, FaShoppingBag} from "react-icons/fa";
 
 export default function Products() {
   return (
@@ -65,7 +65,7 @@ function ProductCard({ product, delay }: ProductProps) {
   }
 
   return (
-    <Link href={`/product/${product.slug}`}>
+    <Link href={`/shop/${product.slug}`}>
       <motion.div
         initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -123,14 +123,7 @@ function ProductCard({ product, delay }: ProductProps) {
 
         {/* Product Details */}
         <div className="relative z-20 p-5 sm:p-7">
-          <div className="flex items-center gap-2 text-yellow-400">
-            <FaStar />
-            <span>{product.rating}</span>
-
-            <span className="text-sm text-gray-400">
-              ({product.reviews})
-            </span>
-          </div>
+          
 
           <h3 className="mt-3 text-xl font-bold sm:text-2xl">
             {product.name}

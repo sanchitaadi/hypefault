@@ -3,8 +3,8 @@
 import { use, useState } from "react";
 import { notFound } from "next/navigation";
 import { products } from "@/data/products";
-import { FaStar } from "react-icons/fa";
 import { useCart } from "@/app/hooks/useCart";
+import Reviews from "./Reviews";
 
 type Props = {
   params: Promise<{
@@ -65,16 +65,6 @@ export default function ProductPage({ params }: Props) {
           <h1 className="text-6xl font-black">
             {product.name}
           </h1>
-
-          <div className="flex items-center gap-3 mt-5 text-yellow-400">
-            <FaStar />
-
-            <span>{product.rating}</span>
-
-            <span className="text-gray-400">
-              ({product.reviews} Reviews)
-            </span>
-          </div>
 
           <div className="flex gap-4 mt-8 items-center">
             <span className="text-4xl font-bold text-red-500">
@@ -190,7 +180,13 @@ export default function ProductPage({ params }: Props) {
 
         </div>
 
-      </div>
-    </main>
+     </div>
+
+<Reviews
+  productId={product.id}
+  productName={product.name}
+/>
+
+</main>
   );
 }

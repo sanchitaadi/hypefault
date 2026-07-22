@@ -162,12 +162,7 @@ export default function ShopPage() {
                       {product.name}
                     </h2>
 
-                    <div className="mt-2 text-yellow-400">
-                      ★★★★★
-                      <span className="ml-2 text-sm text-zinc-500">
-                        (4.9)
-                      </span>
-                    </div>
+                    
 
                     <div className="mt-4 flex items-center gap-3">
                       <span className="text-2xl font-bold text-red-500">

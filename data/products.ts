@@ -4,7 +4,7 @@ export const products: Product[] = [
   {
     id: 1,
 
-    slug: "M2",
+    slug: "bmw-m2-oversized-teee",
 
     name: "M2",
 
@@ -47,7 +47,7 @@ export const products: Product[] = [
   {
     id: 2,
 
-    slug: "BMW",
+    slug: "bmw-oversized-tee",
 
     name: "BMW",
 
@@ -90,7 +90,7 @@ export const products: Product[] = [
   {
     id: 3,
 
-    slug: "porsche",
+    slug: "porsche-oversized-tee",
 
     name: "Porsche",
 

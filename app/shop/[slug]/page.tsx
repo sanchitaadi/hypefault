@@ -4,9 +4,10 @@ import { supabase } from "@/lib/supabase";
 import ProductGallery from "./ProductGallery";
 import ProductOptions from "./ProductOptions";
 import ProductActions from "./ProductActions";
+import Reviews from "./Reviews";
 
 interface Product {
-  id: number;
+  id: string;
   name: string;
   slug: string;
   description: string;
@@ -83,10 +84,7 @@ const product = data as Product;
               {product.name}
             </h1>
 
-            <div className="mt-5 flex items-center gap-2 text-lg text-yellow-400">
-              ★★★★★
-              <span className="text-base text-zinc-500">(124 Reviews)</span>
-            </div>
+            
 
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <span className="text-5xl font-black text-red-500">
@@ -153,8 +151,18 @@ const product = data as Product;
               <p>🔄 7 Days Easy Returns</p>
             </div>
           </div>
-        </div>
+              </div>
+
+            {/* Reviews Section */}
+      <div className="mt-24">
+        <Reviews
+          productId={product.id}
+          productName={product.name}
+        />
       </div>
+
+    </div> {/* closes mx-auto max-w-7xl */}
+
     </main>
   );
 }

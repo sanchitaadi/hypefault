@@ -19,14 +19,13 @@ export default function ProductGallery({
 
   return (
     <div className="space-y-5">
-      <div className="overflow-hidden rounded-3xl border border-white/10 bg-zinc-900">
-        <img
-          src={selectedImage}
-          alt={name}
-          className="h-[650px] w-full object-cover transition duration-500 hover:scale-110"
-        />
-      </div>
-
+      <div className="overflow-hidden rounded-3xl border border-white/10 bg-zinc-900 aspect-square lg:aspect-auto lg:h-[650px]">
+  <img
+    src={selectedImage}
+    alt={name}
+    className="h-full w-full object-contain transition duration-500 hover:scale-105"
+  />
+</div>
       {images.length > 1 && (
         <div className="flex gap-4 overflow-x-auto">
           {images.map((img) => (
@@ -42,7 +41,7 @@ export default function ProductGallery({
               <img
                 src={img}
                 alt=""
-                className="h-24 w-24 object-cover"
+                className="h-20 w-20 object-contain bg-zinc-900 sm:h-24 sm:w-24"
               />
             </button>
           ))}
